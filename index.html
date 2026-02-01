@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Valentine’s Day 💘</title>
+
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 40px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 15px 40px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+    }
+
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+      cursor: pointer;
+    }
+
+    #no {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #message {
+      display: none;
+      font-size: 26px;
+      color: #d63384;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Will you be my Valentine? 💕</h1>
+
+  <button id="yes">Yes 💖</button>
+  <button id="no" disabled>No 💔</button>
+
+  <div id="message">Yay! I’m so happy 💘</div>
+
+  <script>
+    document.getElementById("yes").onclick = () => {
+      document.getElementById("message").style.display = "block";
+    };
+  </script>
+</body>
+</html>
