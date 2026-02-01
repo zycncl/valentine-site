@@ -45,7 +45,6 @@
       cursor: not-allowed;
     }
 
-    /* 🔢 SADE SAYAÇ — SADECE RAKAM */
     #counter {
       position: fixed;
       bottom: 30px;
@@ -65,18 +64,42 @@
   <button id="yes">Yes 💖</button>
   <button id="no">No 💔</button>
 
-  <!-- 🔢 SADE SAYAÇ -->
   <div id="counter">0</div>
 
   <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const counterEl = document.getElementById("counter");
+    // ✅ Make sure DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+      const noBtn = document.getElementById("no");
+      const yesBtn = document.getElementById("yes");
+      const counterEl = document.getElementById("counter");
 
-    let count = 0;
+      let count = 0;
 
-    // No butonu kaçsın
-    function moveNoButton() {
-      const padding = 80;
-      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-      const maxY = window.innerHeight - noBtn.offsetHei
+      function moveNoButton() {
+        const padding = 80;
+        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+        noBtn.style.transform = "none";
+      }
+
+      // No button escapes
+      noBtn.addEventListener("mouseenter", moveNoButton);
+      noBtn.addEventListener("touchstart", moveNoButton);
+      noBtn.addEventListener("mousedown", moveNoButton);
+
+      // Yes counter
+      yesBtn.addEventListener("click", () => {
+        count++;
+        counterEl.textContent = count;
+      });
+    });
+  </script>
+
+</body>
+</html>
