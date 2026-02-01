@@ -10,6 +10,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding-top: 100px;
+      height: 100vh;
       overflow: hidden;
     }
 
@@ -18,26 +19,20 @@
       font-size: 40px;
     }
 
-    .buttons {
-      position: relative;
-      height: 200px;
-      margin-top: 40px;
-    }
-
     button {
       font-size: 20px;
       padding: 15px 40px;
       border: none;
       border-radius: 30px;
       position: absolute;
-      transition: all 0.3s ease;
     }
 
     #yes {
       background-color: #ff4d88;
       color: white;
       left: 50%;
-      transform: translateX(-120px);
+      top: 55%;
+      transform: translate(-120px, -50%);
       cursor: pointer;
     }
 
@@ -45,15 +40,20 @@
       background-color: #ccc;
       color: #666;
       left: 50%;
-      transform: translateX(40px);
+      top: 55%;
+      transform: translate(40px, -50%);
       cursor: not-allowed;
     }
 
-    #message {
-      display: none;
-      font-size: 26px;
+    /* 🔢 SADE SAYAÇ — SADECE RAKAM */
+    #counter {
+      position: fixed;
+      bottom: 30px;
+      right: 40px;
+      font-size: 48px;
       color: #d63384;
-      margin-top: 30px;
+      font-weight: bold;
+      user-select: none;
     }
   </style>
 </head>
@@ -62,27 +62,21 @@
 
   <h1>Will you be my Valentine? 💕</h1>
 
-  <div class="buttons">
-    <button id="yes">Yes 💖</button>
-    <button id="no">No 💔</button>
-  </div>
+  <button id="yes">Yes 💖</button>
+  <button id="no">No 💔</button>
 
-  <div id="message">Yay! I’m so happy 💘🥰</div>
+  <!-- 🔢 SADE SAYAÇ -->
+  <div id="counter">0</div>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
-    const message = document.getElementById("message");
+    const counterEl = document.getElementById("counter");
 
-    // Move the "No" button randomly
+    let count = 0;
+
+    // No butonu kaçsın
     function moveNoButton() {
-      const x = Math.random() * 300 - 150;
-      const y = Math.random() * 150 - 75;
-
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("click", moveNoButton);
-
-    yesBtn.addEventListener(
+      const padding = 80;
+      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - noBtn.offsetHei
