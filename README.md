@@ -1,4 +1,3 @@
-# valen-site
 # 💘 Valentine Site
 
 A tiny, playful Valentine’s Day website with a simple question:
