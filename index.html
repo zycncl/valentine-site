@@ -10,6 +10,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding-top: 100px;
+      overflow: hidden;
     }
 
     h1 {
@@ -17,22 +18,34 @@
       font-size: 40px;
     }
 
+    .buttons {
+      position: relative;
+      height: 200px;
+      margin-top: 40px;
+    }
+
     button {
       font-size: 20px;
       padding: 15px 40px;
-      margin: 10px;
       border: none;
       border-radius: 30px;
+      position: absolute;
+      transition: all 0.3s ease;
     }
 
     #yes {
       background-color: #ff4d88;
       color: white;
+      left: 50%;
+      transform: translateX(-120px);
       cursor: pointer;
     }
 
     #no {
       background-color: #ccc;
+      color: #666;
+      left: 50%;
+      transform: translateX(40px);
       cursor: not-allowed;
     }
 
@@ -46,17 +59,30 @@
 </head>
 
 <body>
+
   <h1>Will you be my Valentine? 💕</h1>
 
-  <button id="yes">Yes 💖</button>
-  <button id="no" disabled>No 💔</button>
+  <div class="buttons">
+    <button id="yes">Yes 💖</button>
+    <button id="no">No 💔</button>
+  </div>
 
-  <div id="message">Yay! I’m so happy 💘</div>
+  <div id="message">Yay! I’m so happy 💘🥰</div>
 
   <script>
-    document.getElementById("yes").onclick = () => {
-      document.getElementById("message").style.display = "block";
-    };
-  </script>
-</body>
-</html>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const message = document.getElementById("message");
+
+    // Move the "No" button randomly
+    function moveNoButton() {
+      const x = Math.random() * 300 - 150;
+      const y = Math.random() * 150 - 75;
+
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    yesBtn.addEventListener(
